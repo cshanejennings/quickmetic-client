@@ -89,12 +89,7 @@ const CallScheduled = (props) => {
     ) : '';
    }
 
-  const block_submit = (
-    !updating &&
-    values.company_name.length > 2 &&
-    // values.phone_number.length === 12 && //TODO: find out why this is failing
-    values.time.length > 3
-  ) ? false : true;
+  const block_submit = false;
 
   const get_form = () => {
     return (updated) ? (

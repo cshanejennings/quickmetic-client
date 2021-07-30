@@ -23,7 +23,7 @@ const get_styles = makeStyles(theme => ({
 
 const LoginGoogle = (props) => {
   const classes = get_styles();
-  const { get_google_profile, profile, subscription, api_ready } = props;
+  const { get_google_profile, profile, api_ready } = props;
 
   const params = window.location.search;
   if (params && api_ready && !CONNECTION.initialized) {
@@ -31,8 +31,8 @@ const LoginGoogle = (props) => {
     get_google_profile(params);
   }
 
-  if (profile.email && subscription.sms_number) {
-    return <Redirect to={'/active-threads'} />;
+  if (profile.email) {
+    return <Redirect to={'/trial'} />;
   } else if (profile.email) {
     return <Redirect to={'/account'} />;
   }
