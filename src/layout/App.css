@@ -1,0 +1,41 @@
+table.trial {
+  margin: 10px;
+}
+
+/* .done button {
+  width: 100%;
+  background: #47cacc;
+  border: 2px solid #63bcc9;
+  margin-top: 10px;
+} */
+
+.type {
+  font-size: 2rem;
+  color: #ffbe88;
+}
+
+.trial tr {
+  margin: 0;
+  display: table;
+}
+
+.trial td,
+.entry input {
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.entry input {
+  font-weight: normal;
+  padding: 0;
+  border: 1px solid #cdb3d4;
+}
+
+.num {
+  border: 1px solid #cdb3d4;
+  border: none;
+}
