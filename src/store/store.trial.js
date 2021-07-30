@@ -53,15 +53,6 @@ export const update_countdown = (data) => (dispatch) => {
   dispatch({ type });
 }
 
-  export const load_trials = () => (dispatch) => {
-    const { TRIALS_LOADING, TRIALS_LOADED } = TRIAL_EVENTS;
-    dispatch({type: TRIALS_LOADING});
-    get_all_trials().then(response => { dispatch({
-      type: TRIALS_LOADED,
-      payload: response.data
-    })}).catch(e => { console.error(e); });
-  }
-
   export const submit_trial = (data) => (dispatch) => {
     const { TRIAL_SUBMITTING, TRIAL_SUBMITTED } = TRIAL_EVENTS;
     dispatch({type: TRIAL_SUBMITTING});
@@ -110,12 +101,6 @@ function reduce(state = INITIAL_STATE, action = {}) {
       new_state.settings = {...action.payload.settings};
       // data: elapsed_time, header_values, row_values, entries, answers
       new_state.data = {...action.payload.data };
-
-      // new_state.header_values = action.payload.header_values;
-      // new_state.row_values = action.payload.row_values;
-      // new_state.entries = action.payload.entries;
-      // new_state.answers = action.payload.answers;
-      // new_state.elapsed_time = 0;
     break;
     case TRIAL_EVENTS.UPDATE_ENTRIES:
       new_state.data.entries = action.payload.entries;
@@ -128,14 +113,6 @@ function reduce(state = INITIAL_STATE, action = {}) {
     break;
     case TRIAL_EVENTS.SUBMIT_TRIAL:
       console.log('TRIAL_EVENTS.SUBMIT_TRIAL event');
-    break;
-    case TRIAL_EVENTS.TRIALS_LOADING:
-      new_state.loading_trials = true;
-      new_state.trials = [];
-    break;
-    case TRIAL_EVENTS.TRIALS_LOADED:
-      new_state.loading_trials = false;
-      new_state.trials = action.payload;
     break;
     case TRIAL_EVENTS.TRIAL_SUBMITTING:
       new_state.submitting_trial = true;

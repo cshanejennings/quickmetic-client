@@ -16,8 +16,6 @@ export const FORM_EVENTS = {
 };
 
 export const TRIAL_EVENTS = {
-  TRIALS_LOADING: 'math.trial.trials-loading',
-  TRIALS_LOADED: 'math.trial.trials-loaded',
   TRIAL_SUBMITTING: 'math.trial.trial-submitting',
   TRIAL_SUBMITTED: 'math.trial.trial-submited',
   UPDATE_TRIAL: 'math.trial.update-trial',
@@ -35,8 +33,8 @@ export const NAV_EVENTS = {
 }
 
 export const REPORT_EVENTS = {
-  REPORT_LOAD: 'wlc.reports.report-load',
-  REPORT_LOADED: 'wlc.reports.report-loaded',
+  RECORDS_LOADING: 'math.trial.records-loading',
+  RECORDS_LOADED: 'math.trial.records-loaded',
 };
 
 export const ITEM_EVENTS = {

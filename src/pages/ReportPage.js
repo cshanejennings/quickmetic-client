@@ -18,12 +18,12 @@ import {
   // Paper,
   Typography,
   Divider,
-  Button,
+  // Button,
 } from '@material-ui/core/';
 
 import {
   load_trials,
-} from '../store/store.trial';
+} from '../store/store.reports';
 
 const get_styles = makeStyles(theme => ({
 }));
@@ -32,14 +32,19 @@ const ReportPage = (props) => {
   const classes = get_styles();
 
   const {
-    trials,
+    reports,
     load_trials,
-    loading_trials,
+    records_loading,
+    records_loaded,
+    profile,
+    selected_type,
   } = props;
 
-  if (trials.length) {
-    window.trials = trials;
+  if (profile.email && !records_loading && !records_loaded) {
+    load_trials();
   }
+
+  const trials = reports[selected_type];
 
   const report = () => {
     const data = trials.map((t, i) => ({
@@ -70,11 +75,9 @@ const ReportPage = (props) => {
         <Area type="monotone" dataKey="percent" stroke="#82ca9d" fillOpacity={1} fill="url(#colorUv)" />
         <Area type="monotone" dataKey="elapsed" stroke="#E45647" fillOpacity={1} fill="url(#colorPv)" />
       </AreaChart>
-    ) : (loading_trials) ? (
+    ) : (records_loading) ? (
       <Typography>Loading your records, please wait</Typography>
-    ) : (
-      <Button onClick={load_trials}>load</Button>
-    )
+    ) : <Typography>Logging in</Typography>;
   }
 
 
@@ -89,8 +92,11 @@ const ReportPage = (props) => {
 }
 
 const mapStateToProps = state => { return {
-  trials: state.trial.trials,
-  loading_trials: state.trial.loading_trials,
+  reports: state.reports.reports,
+  records_loading: state.reports.records_loading,
+  records_loaded: state.reports.records_loaded,
+  selected_type: state.reports.selected_type,
+  profile: state.user.profile,
 } };
 
 const mapDispatchToProps = (dispatch) => { return {
