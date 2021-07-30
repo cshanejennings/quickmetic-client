@@ -33,18 +33,11 @@ const NotLoggedIn = (props) => {
     return (
       <Grid className={ classes.root } container spacing={1}>
         <Grid item md={6} xs={12}>
-          <Typography variant="h6">What is Text Lobby?</Typography>
+          <Typography variant="h6">What is quickmetic?</Typography>
           <Divider className={ classes.divider }></Divider>
           <Typography paragraph={ true } variant="body1">
-            TextLobby is a phone line used exclusively for text messaging
-            your customers.  As of right now, the project is in the beta
-            testing phase with a focus on extending the waiting room for
-            clinic owners through text messaging.
-          </Typography>
-          <Typography paragraph={ true } variant="body1">
-            If you are interested in knowing when TextLobby will be available
-            to the public, you can add your name to the notification list
-            here:
+            This is a personal project I am creating to help my kids improve the
+            speed of their arithmetic.
           </Typography>
         </Grid>
         <Grid item md={6} xs={12}>
