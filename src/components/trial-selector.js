@@ -39,8 +39,8 @@ const TrialSelector = (props) => {
     header_digits,
     row_digits,
     type,
-    width,
-    height,
+    // width,
+    // height,
   } = trial.settings;
 
   const update = (key, val) => {
@@ -50,8 +50,41 @@ const TrialSelector = (props) => {
   const update_header_digits = (e) => update('header_digits', e.target.value);
   const update_row_digits = (e) => update('row_digits', e.target.value);
   const update_type = (e) => update('type', e.target.value);
-  const update_width = (e) => update('width', e.target.value);
-  const update_height = (e) => update('height', e.target.value);
+  // const update_width = (e) => update('width', e.target.value);
+  // const update_height = (e) => update('height', e.target.value);
+  // const get_dimensions_settings = () => {
+  //   return (
+  //     <Grid item md={3} xs={12}>
+  //     <FormControl className={classes.formControl}>
+  //       <InputLabel id="width-label">Table Width</InputLabel>
+  //       <Select labelId="width-label" id="width"
+  //         value={ width }
+  //         onChange={ update_width }
+  //       >
+  //         <MenuItem value={3}>3</MenuItem>
+  //         <MenuItem value={4}>4</MenuItem>
+  //         <MenuItem value={5}>5</MenuItem>
+  //       </Select>
+  //     </FormControl>
+  //     </Grid>
+  //     <Grid item md={9} xs={12}>
+  //     <FormControl className={classes.formControl}>
+  //       <InputLabel id="height-label">Table Height</InputLabel>
+  //       <Select labelId="height-label" id="height"
+  //         value={ height }
+  //         onChange={ update_height }
+  //       >
+  //         <MenuItem value={3}>3</MenuItem>
+  //         <MenuItem value={4}>4</MenuItem>
+  //         <MenuItem value={5}>5</MenuItem>
+  //         <MenuItem value={6}>6</MenuItem>
+  //         <MenuItem value={7}>7</MenuItem>
+  //         <MenuItem value={8}>8</MenuItem>
+  //       </Select>
+  //     </FormControl>
+  //     </Grid>
+  //   );
+  // }
 
     return (
       <Grid className={ classes.root } container spacing={1}>
@@ -83,35 +116,7 @@ const TrialSelector = (props) => {
           </Select>
         </FormControl>
         </Grid>
-        <Grid item md={3} xs={12}>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="width-label">Table Width</InputLabel>
-          <Select labelId="width-label" id="width"
-            value={ width }
-            onChange={ update_width }
-          >
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </Select>
-        </FormControl>
-        </Grid>
-        <Grid item md={9} xs={12}>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="height-label">Table Height</InputLabel>
-          <Select labelId="height-label" id="height"
-            value={ height }
-            onChange={ update_height }
-          >
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-            <MenuItem value={6}>6</MenuItem>
-            <MenuItem value={7}>7</MenuItem>
-            <MenuItem value={8}>8</MenuItem>
-          </Select>
-        </FormControl>
-        </Grid>
+
         <Grid item md={3} xs={12}>
           <FormControl className={classes.formControl}>
             <InputLabel id="type-label">Type</InputLabel>
