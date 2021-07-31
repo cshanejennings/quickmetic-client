@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
 import {
-  get_all_trials,
   submit_trial_results,
 } from '../util/laravel-api';
 

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
-  Button,
-  // Typography,
+  // Button,
+  Typography,
 } from '@material-ui/core/';
 
 import CellEntry from './cell-entry';
@@ -52,6 +52,11 @@ const TrialTable = (props) => {
       </tr>
     )
   }
+  setTimeout(() => {
+    if (!entries[0][0] && entries[0][0] !== 0) {
+      document.getElementById(`answer_0-0`).focus();
+    }
+  })
 
   const on_update = (update_col, update_row, update_val) => {
     const new_entries = entries.map((row, row_index) => row.map((value, column_index) => {
@@ -80,6 +85,14 @@ const TrialTable = (props) => {
     );
   }
 
+
+  const ready = entries.reduce((pass, cells, row) => {
+    const row_result = (cells.map((entry, col) => {
+      return (entry === String(answers[row][col]))
+    }).indexOf(false) === -1) ? true : false;
+    return (row_result && pass);
+  }, true);
+
   const handleKeyPress = (e, field) => {
     const focus = (r, c) => {
       document.getElementById(`answer_${r}-${c}`).focus();
@@ -90,9 +103,9 @@ const TrialTable = (props) => {
       const col = parseInt(r_c[1], 10);
 
       if (e.keyCode === 13) { // enter key
+        if (ready) evaluate(answers);
         if (row < row_count - 1) focus(row + 1, col);
         else if (col <= column_count - 2) focus(0, col + 1);
-        else document.getElementById('submit-button').focus();
       } else if (e.keyCode === 37) { // left key
         if (col > 0) focus(row, col - 1);
         else if (row > 0) focus(row - 1, column_count - 1);
@@ -109,39 +122,23 @@ const TrialTable = (props) => {
     }
   }
 
-  const ready = entries.reduce((pass, cells, row) => {
-    const row_result = (cells.map((entry, col) => {
-      return (entry === String(answers[row][col]))
-    }).indexOf(false) === -1) ? true : false;
-    return (row_result && pass);
-  }, true);
-
-  const submit = () => {
-    evaluate(answers);
-  }
 
   const get_table = () => {
-    return (submitting_trial) ? (
-      <tbody />
+    return (!submitting_trial) ? (
+      <table className="trial">
+        <thead>{ get_header() }</thead>
+        <tbody onKeyDown={ handleKeyPress }>
+          { row_values.map(get_row) }
+        </tbody>
+      </table>
     ) : (
-      <tbody onKeyDown={ handleKeyPress }>
-        { row_values.map(get_row) }
-      </tbody>
+      <Typography>Submitting Results</Typography>
     )
   }
 
   return (
     <div className={classes.root}>
-    <table className="trial">
-      <thead>{ get_header() }</thead>
-      { get_table() }
-    </table>
-    <Button id="submit-button"
-      disabled={ !ready || submitting_trial  }
-      onClick={ submit }
-      className={ classes.done }
-      fullWidth
-    >Done</Button>
+    { get_table() }
     </div>
   );
 }
