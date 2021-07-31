@@ -43,6 +43,15 @@ const TrialSelector = (props) => {
     // height,
   } = trial.settings;
 
+  const handleEnter = (e) => (e.keyCode === 13) ? get_trial(trial) : null;
+
+  React.useEffect(() => {
+    document.addEventListener("keydown", handleEnter, false);
+    return () => {
+      document.removeEventListener("keydown", handleEnter, false);
+    };
+  });
+
   const update = (key, val) => {
     update_values({...trial.settings, [key] : val });
   }
@@ -133,6 +142,7 @@ const TrialSelector = (props) => {
         </Grid>
         <Grid item md={9} xs={12}>
         <Button
+          id="start_trial"
           variant="contained"
           color="primary"
           size="small"
