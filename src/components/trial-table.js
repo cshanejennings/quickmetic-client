@@ -104,8 +104,12 @@ const TrialTable = (props) => {
 
       if (e.keyCode === 13) { // enter key
         if (ready) evaluate(answers);
-        if (row < row_count - 1) focus(row + 1, col);
-        else if (col <= column_count - 2) focus(0, col + 1);
+        if (String(answers[row][col]) === entries[row][col]) {
+          if (row < row_count - 1) focus(row + 1, col);
+          else if (col <= column_count - 2) focus(0, col + 1);
+        } else {
+          on_update(col, row, '');
+        }
       } else if (e.keyCode === 37) { // left key
         if (col > 0) focus(row, col - 1);
         else if (row > 0) focus(row - 1, column_count - 1);
