@@ -108,6 +108,7 @@ const Trial = (props) => {
         <CountDown
           width={ 240 }
           remaining={ trial_time - elapsed_time }
+          percent={ elapsed_time / trial_time }
           elapsed={ elapsed_time }
         />
       </Grid>

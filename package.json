@@ -32,6 +32,8 @@
     "redux": "4.1.0",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "2.3.0",
+    "tinycolor2": "^1.4.2",
+    "webpack": "4.44.2",
     "xlsx": "^0.16.7"
   },
   "scripts": {
