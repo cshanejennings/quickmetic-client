@@ -3,6 +3,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import {
   AreaChart,
@@ -29,14 +30,15 @@ const get_styles = makeStyles(theme => ({
 }));
 
 const ReportPage = (props) => {
+
   const classes = get_styles();
+  const { api_ready, profile } = props;
 
   const {
     reports,
     load_trials,
     records_loading,
     records_loaded,
-    profile,
     selected_type,
   } = props;
 
@@ -104,11 +106,12 @@ const ReportPage = (props) => {
     ) : <Typography>Logging in</Typography>;
   }
 
+  const redirect = (api_ready && !profile.email) ? (<Redirect to="/" /> )  : '';
 
   return (
     <div>
       <Typography variant="h5">Reports</Typography>
-
+      { redirect }
       <Divider className={ classes.divider }/>
       { report() }
     </div>
@@ -121,6 +124,7 @@ const mapStateToProps = state => { return {
   records_loaded: state.reports.records_loaded,
   selected_type: state.reports.selected_type,
   profile: state.user.profile,
+  api_ready: state.app.api_ready,
 } };
 
 const mapDispatchToProps = (dispatch) => { return {

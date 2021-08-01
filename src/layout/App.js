@@ -51,6 +51,10 @@ const get_styles = makeStyles(theme => ({
 
 const App = (props) => {
   const classes = get_styles();
+  // create private routes:
+  // https://reactrouter.com/web/example/auth-workflow
+  // https://medium.com/@thanhbinh.tran93/private-route-public-route-and-restricted-route-with-react-router-d50b27c15f5e
+
   return (
     <Provider store={store}>
       <Router>
