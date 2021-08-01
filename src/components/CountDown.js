@@ -158,7 +158,7 @@ const CountDown = (props) => {
             dataKey="value"
             cx="50%"
             cy="50%"
-            innerRadius={80}
+            innerRadius={82}
             outerRadius={110}
             isAnimationActive={false}
             fill={ tinycolor.mix("#A1C7FE", "#B73060", percent * 100).toHex() }
