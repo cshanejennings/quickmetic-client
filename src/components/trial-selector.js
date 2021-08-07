@@ -19,17 +19,21 @@ import {
 } from '../store/store.trial';
 
 // import Icon from '@material-ui/core/Icon';
-import PlayCircleFilled from '@material-ui/icons/PlayCircleFilled';
+import Timer from '@material-ui/icons/Timer';
 
 const get_styles = makeStyles(theme => ({
   root: {},
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 200,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  go_button: {
+    padding: 20,
+    width: 200
+  }
 }));
 
 const TrialSelector = (props) => {
@@ -141,16 +145,15 @@ const TrialSelector = (props) => {
           </FormControl>
         </Grid>
         <Grid item md={9} xs={12}>
-        <Button
-          id="start_trial"
-          variant="contained"
-          color="primary"
-          size="small"
-          className={classes.button}
-          startIcon={<PlayCircleFilled />}
-          onClick={ () => get_trial(trial) }
-        >
-          Start
+          <Button
+            id="start_trial"
+            variant="contained"
+            className={ classes.go_button }
+            color="primary"
+            startIcon={<Timer />}
+            onClick={ () => get_trial(trial) }
+          >
+          <Typography variant="h5">Go</Typography>
         </Button>
         </Grid>
       </Grid>

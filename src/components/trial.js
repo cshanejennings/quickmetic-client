@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
 import TrialTable from './trial-table';
+import AnswerAddition from './answer-addition';
 import CountDown from './CountDown';
 
 import {
@@ -105,6 +106,10 @@ const Trial = (props) => {
     <Grid className={ classes.root } container spacing={1}>
       <Grid item md={4} xs={12}>
         <Typography className={ classes.formula } variant="h3">{ row_value } + { col_value }</Typography>
+        <AnswerAddition
+          first_number={ row_value }
+          second_number={ col_value }
+        />
         <CountDown
           width={ 240 }
           remaining={ trial_time - elapsed_time }
