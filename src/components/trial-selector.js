@@ -151,7 +151,10 @@ const TrialSelector = (props) => {
             className={ classes.go_button }
             color="primary"
             startIcon={<Timer />}
-            onClick={ () => get_trial(trial) }
+            onClick={ () => get_trial({
+              ...trial,
+              last_entry: new Date().getTime()
+            }) }
           >
           <Typography variant="h5">Go</Typography>
         </Button>

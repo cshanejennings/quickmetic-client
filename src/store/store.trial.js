@@ -74,11 +74,13 @@ const INITIAL_STATE = {
     type: 'subtraction',
   },
   data: {
+    last_entry: null,
     elapsed_time: 0,
     header_values: [],
     row_values: [],
     entries: [],
     answers: [],
+    timings: [],
   }
 
 };
@@ -103,6 +105,7 @@ function reduce(state = INITIAL_STATE, action = {}) {
     break;
     case TRIAL_EVENTS.UPDATE_ENTRIES:
       new_state.data.entries = action.payload.entries;
+      new_state.data.last_entry = new Date().getTime();
     break;
     case TRIAL_EVENTS.UPDATE_COUNTDOWN:
       new_state.data.elapsed_time += 1;

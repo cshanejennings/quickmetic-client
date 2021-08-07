@@ -43,7 +43,10 @@ const Trial = (props) => {
     entries,
     answers,
     elapsed_time,
+    last_entry,
   } = trial.data;
+
+  const delay = new Date().getTime() - last_entry;
 
   const {
     trial_time
@@ -101,15 +104,19 @@ const Trial = (props) => {
     set_position({row, col, val});
   }
 
+  const display_answer_key = () => (delay > 5000) ? (
+    <AnswerAddition
+      first_number={ row_value }
+      second_number={ col_value }
+    />
+  ) : '';
+
 
   return (
     <Grid className={ classes.root } container spacing={1}>
       <Grid item md={4} xs={12}>
         <Typography className={ classes.formula } variant="h3">{ row_value } + { col_value }</Typography>
-        <AnswerAddition
-          first_number={ row_value }
-          second_number={ col_value }
-        />
+        { display_answer_key() }
         <CountDown
           width={ 240 }
           remaining={ trial_time - elapsed_time }
